@@ -26,4 +26,4 @@ GET /api/medicos/crm/{crm}: Busca um médico pelo CRM.
 
 Este projeto está licenciado sob a Licença MIT.
 
-Desenvolvido como projeto avaliado para discplina de POO.
+Projeto desenvolvido como metodo avaliativo para disciplina de Programação Orientada a Objetos.
