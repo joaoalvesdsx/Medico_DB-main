@@ -1,4 +1,7 @@
-﻿# API de Gerenciamento de Funcionários e Médicos
+Projeto desenvolvido como metodo avaliativo para disciplina de Programação Orientada a Objetos.
+
+ 
+ # API de Gerenciamento de Funcionários e Médicos
  
 Este é um projeto de API desenvolvido em Java com Spring Boot para gerenciar funcionários e médicos em um hospital. A API utiliza o banco de dados SQLite para armazenar os dados e permite o cadastro, consulta, atualização e exclusão de funcionários e médicos, bem como a busca por diferentes critérios.
 
@@ -26,4 +29,3 @@ GET /api/medicos/crm/{crm}: Busca um médico pelo CRM.
 
 Este projeto está licenciado sob a Licença MIT.
 
-Projeto desenvolvido como metodo avaliativo para disciplina de Programação Orientada a Objetos.
