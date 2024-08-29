@@ -3,29 +3,75 @@ Projeto desenvolvido como metodo avaliativo para disciplina de Programação Ori
  
  # API de Gerenciamento de Funcionários e Médicos
  
-Este é um projeto de API desenvolvido em Java com Spring Boot para gerenciar funcionários e médicos em um hospital. A API utiliza o banco de dados SQLite para armazenar os dados e permite o cadastro, consulta, atualização e exclusão de funcionários e médicos, bem como a busca por diferentes critérios.
+Sistema de Gestão de Médicos e Funcionários Hospitalares
+Este projeto é um sistema de gerenciamento hospitalar desenvolvido em Spring Boot com SQLite como banco de dados. Ele permite o cadastro, consulta, atualização e remoção de médicos e funcionários em um hospital. Além disso, inclui funcionalidades específicas para médicos, como consultas por CRM e especialidade.
 
-Endpoints da API
-A API possui os seguintes endpoints:
+Funcionalidades
+1. Gerenciamento de Médicos
+Cadastro de Médicos:
 
-Funcionários:
-POST /api/cadastrar_funcionario: Cadastra um novo funcionário.
-PUT /api/funcionarioAlterar/{nome}: Atualiza os dados de um funcionário pelo nome.
-DELETE /api/funcionario/{id}: Remove um funcionário pelo ID.
-GET /api/funcionarios: Lista todos os funcionários.
-GET /api/funcionarios/nome_completo/{nome}: Busca um funcionário pelo nome completo.
-GET /api/funcionarios/parte_nome/{nome}: Lista funcionários cujo nome contém uma parte especificada.
-GET /api/funcionarios/parte_nome/medico/{nome}: Lista funcionários cujo nome contém uma parte especificada e são médicos.
-GET /api/funcionarios/cargo/{cargo}: Obtém o somatório dos salários de todos os funcionários de um cargo específico.
-DELETE /api/funcionarioDeletarNome/{nome}: Remove um funcionário pelo nome.
-DELETE /api/funcionarioDeletarCpf/{cpf}: Remove um funcionário pelo CPF.
+Permite o cadastro de médicos com as seguintes informações: RG, CPF, nome, CRM, telefone e especialidade.
+Consulta de Médicos:
 
-Médicos:
-POST /api/cadastrar_medico: Cadastra um novo médico.
-PUT /api/medicoAlterar/{nome}: Atualiza os dados de um médico pelo nome.
-DELETE /api/medicoDeletarCrm/{crm}: Remove um médico pelo CRM.
-GET /api/medicos/especialidade/{especialidade}: Lista médicos por especialidade.
-GET /api/medicos/crm/{crm}: Busca um médico pelo CRM.
+Consulta por RG: Solicita o RG e apresenta todas as informações do médico.
+Consulta por CRM: Lista todos os RGs e nomes e permite a consulta detalhada por CRM.
+Consulta por Nome: Solicita o nome e apresenta as informações correspondentes.
+Consulta por Parte do Nome: Permite buscar médicos com base em parte do nome (ex.: "Ed" retorna "Eduardo", "Eduardo Almeida", "Edvaldo").
+Remoção de Médicos:
 
-Este projeto está licenciado sob a Licença MIT.
+Remoção por CRM: Lista todos os médicos, solicita o CRM para exclusão e pede confirmação.
+Remoção por Nome: Solicita o nome (ou parte do nome) e, após exibir as informações, solicita confirmação antes de excluir.
+Atualização de Médicos:
+
+Permite a atualização dos dados de um médico após realizar uma consulta por RG, CRM, nome ou parte do nome.
+2. Gerenciamento de Funcionários
+Cadastro de Funcionários:
+
+Cadastro de funcionários com os seguintes dados: RG, CPF, nome, telefone, endereço, cidade, estado, salário e cargo.
+Se o cargo for médico, exige também o CRM e a especialidade.
+Consulta de Funcionários:
+
+Consulta por Cargo: Lista todos os funcionários de um determinado cargo e apresenta o somatório dos salários dos funcionários para o cargo buscado.
+Consulta de Médicos:
+
+Consulta por Especialidade: Lista médicos pela especialidade.
+Consulta por CRM: Permite buscar enfermeiros de acordo com o CRM informado (ou parte dele).
+Atualização de Funcionários:
+
+Permite a atualização dos dados de um funcionário, exceto o cargo, que não pode ser modificado após o cadastro.
+3. Integração das Funcionalidades
+Todas as funcionalidades dos módulos de médicos e funcionários estão integradas em um único sistema.
+
+Estrutura do Banco de Dados
+Tabelas Principais
+Medico
+Campos: RG, CPF, nome, CRM, telefone, especialidade.
+Funcionario
+Campos: RG, CPF, nome, telefone, endereco, cidade, estado, salario, cargo.
+Se o cargo for "médico", são incluídos CRM e especialidade.
+Configuração do Projeto
+Pré-requisitos
+Java 8 ou superior
+Maven
+SQLite
+Executando o Projeto
+
+Clone o repositório:
+
+
+O projeto está configurado para usar um banco de dados SQLite. Certifique-se de que o arquivo do banco de dados (hospital.db) esteja na pasta src/main/resources/.
+Compile e execute o projeto:
+
+
+Copiar código
+mvn clean install
+mvn spring-boot:run
+Acesse o sistema:
+
+O sistema estará disponível em http://localhost:8080.
+Estrutura do Código
+src/main/java/com/hospital/gestao: Contém as classes principais do sistema.
+src/main/resources/application.properties: Configurações do banco de dados e outras propriedades do sistema.
+src/main/resources/templates: Templates de páginas HTML (se aplicável).
+
 
